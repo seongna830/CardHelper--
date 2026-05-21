@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSwipe - 搜尋結果</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="phone-container">
+        <header class="result-header">
+            <a href="{{ url_for('index') }}" class="back-btn">❮ 返回</a>
+            <h2 class="header-title">推薦方案</h2>
+        </header>
+
+        <main class="main-content">
+            <p style="margin-bottom: 20px; color: #636E72;">搜尋「{{ query }}」的結果：</p>
+
+            {% for item in results %}
+            <div class="result-card" style="margin-bottom: 25px; position: relative;">
+                <div class="card-header">
+                    <h3 class="card-name">{{ item.card }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <span class="info-label">消費店家</span>
+                        <span class="info-value">{{ item.store }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">適用方案</span>
+                        <div class="info-value">
+                            <span class="tag">{{ item.plan }}</span>
+                        </div>
+                    </div>
+                    <div class="rate-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; margin-bottom: 15px;">
+                        <span style="font-weight: bold; color: #3D348B;">最優回饋</span>
+                        <span class="rate-value">{{ item.rate }}</span>
+                    </div>
+
+                    {% if item.url and item.url != '#' and item.url != '' %}
+                    <div style="display: flex; justify-content: flex-end; width: 100%; border-top: 1px dashed #EEE; padding-top: 12px; margin-top: 10px;">
+                        <a href="{{ item.url }}" target="_blank" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #FF8C42, #FF7132);
+                            color: white;
+                            text-decoration: none;
+                            padding: 8px 16px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 10px rgba(255,140,66,0.15);
+                            transition: transform 0.1s ease;
+                        " 
+                        onmouseover="this.style.filter='brightness(1.05)'"
+                        onmouseout="this.style.filter='brightness(1)'">
+                            前往官網方案 ↗
+                        </a>
+                    </div>
+                    {% else %}
+                    <div style="display: flex; justify-content: flex-end; width: 100%; border-top: 1px dashed #EEE; padding-top: 12px; margin-top: 10px;">
+                        <span style="
+                            display: inline-block;
+                            background: #E0E0E0;
+                            color: #888888;
+                            padding: 8px 16px;
+                            font-size: 13px;
+                            font-weight: bold;
+                            border-radius: 8px;
+                            cursor: not-allowed;
+                        ">
+                            暫無官方連結
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if not results %}
+            <div style="text-align: center; margin-top: 60px; color: #636E72;">
+                <p>查無此優惠，請重新搜尋</p>
+            </div>
+            {% endif %}
+
+            <a href="{{ url_for('index') }}" class="outline-btn">重新搜尋</a>
+        </main>
+    </div>
+</body>
+</html>

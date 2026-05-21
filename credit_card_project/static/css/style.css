@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #FF8C42;    /* 主色：暖陽珊瑚 */
+    --secondary-color: #3D348B;  /* 副色：深靛藍 */
+    --accent-color: #E84855;     /* 亮色：玫瑰紅 */
+    --bg-color: #FAF8F5;         /* 背景：米白 */
+    --card-bg: #FFFFFF;
+    --text-main: #2D3436;
+    --text-muted: #636E72;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+}
+
+body {
+    background-color: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.phone-container {
+    width: 100%;
+    max-width: 430px;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 內容區 */
+.main-content {
+    flex: 1;
+    padding: 25px;
+    
+    /* 1. 確保顯示模式為 block，讓卡片自然堆疊 */
+    display: block; 
+    
+    /* 2. 開啟垂直捲動 */
+    overflow-y: auto; 
+    
+    /* 3. 確保容器有固定參考高度(來自父層 flex:1)，這行通常由父層決定，但可以補上這行確保 */
+    height: 100%; 
+}
+
+/* 首頁專屬 */
+.illustration-area { margin: 40px 0 20px; text-align: center; }
+.main-img { width: 120px; filter: drop-shadow(0 10px 15px rgba(255,140,66,0.2)); }
+.page-title { 
+    font-size: 24px; 
+    text-align: center; 
+    margin-bottom: 40px; 
+    color: var(--secondary-color);
+    font-weight: 800;
+}
+
+/* 搜尋表單 */
+.search-form {
+    width: 100%; /* 確保表單佔滿容器 */
+}
+
+.input-label { 
+    display: block; 
+    font-size: 14px; 
+    color: var(--text-muted); 
+    margin-bottom: 10px; 
+    padding-left: 5px;
+}
+
+/* 輸入框包裝 */
+.input-wrapper {
+    width: 100%; /* 強制與表單等寬 */
+    background: #fff;
+    border: 2px solid #EEE;
+    border-radius: 15px;
+    padding: 16px;
+    transition: all 0.3s;
+    margin-bottom: 30px; /* 縮小與按鈕的距離 */
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(255,140,66,0.1);
+}
+
+.input-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* 按鈕 - 現在與輸入框等寬 */
+.submit-btn {
+    width: 100%; /* 強制與輸入框等寬 */
+    background: linear-gradient(135deg, #FF8C42, #FF7132);
+    color: white;
+    border: none;
+    border-radius: 15px; /* 為了對齊輸入框，調整圓角率 */
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255,140,66,0.2);
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.05);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* 子頁面特定樣式 */
+.result-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #EEE;
+}
+.back-btn { text-decoration: none; color: var(--primary-color); font-weight: bold; }
+.header-title { flex: 1; text-align: center; color: var(--secondary-color); font-size: 18px; margin-right: 40px; }
+
+.result-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    
+    /* 關鍵：強制卡片不可以被壓縮，維持原始內容高度 */
+    flex-shrink: 0; 
+    
+    /* 確保卡片之間有足夠間距 */
+    margin-bottom: 25px; 
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+.card-header { background: var(--secondary-color); padding: 12px 20px; color: white; }
+.card-name { font-size: 17px; }
+.card-body { padding: 20px; }
+.info-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.info-label { color: var(--text-muted); font-size: 14px; }
+.info-value { color: var(--text-main); font-weight: 600; }
+.rate-value { font-size: 32px; color: var(--accent-color); font-weight: 800; }
+
+.outline-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    margin-top: 20px;
+}

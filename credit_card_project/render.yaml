@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: card-helper-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    version: free

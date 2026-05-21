@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSwipe - 搜尋優惠</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="phone-container">
+        <main class="main-content">
+            <div class="illustration-area">
+                <img src="https://cdn-icons-png.flaticon.com/512/633/633600.png" alt="Search" class="main-img">
+            </div>
+
+            <h1 class="page-title">消費優惠查詢</h1>
+
+            <form action="/search" method="POST" class="search-form">
+                <div class="input-group">
+                    <label class="input-label">在哪裡消費？</label>
+                    <div class="input-wrapper">
+                        <input type="text" name="store_name" placeholder="例如：麥當勞、星巴克..." required autocomplete="off">
+                    </div>
+                </div>
+            <button type="submit" class="submit-btn">搜尋最優回饋</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
